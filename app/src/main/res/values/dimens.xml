@@ -1,0 +1,37 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--login page-->
+    <dimen name="activity_login_paddingLeft">40dp</dimen>
+    <dimen name="activity_login_paddingRight">40dp</dimen>
+    <dimen name="activity_login_img_height_width">100dp</dimen>
+    <dimen name="activity_login_img_height_width_bio">100dp</dimen>
+    <dimen name="activity_login_margin_top">30dp</dimen>
+    <dimen name="activity_login_margin_top_login">30dp</dimen>
+    <dimen name="activity_login_card_padding">16dp</dimen>
+    <dimen name="activity_login_view">10dp</dimen>
+    <dimen name="activity_login_edtxt_margin_left_and_right">10dp</dimen>
+    <dimen name="activity_login_edtxt_margin_top">16dp</dimen>
+    <dimen name="activity_login_edtxt_txt_size">17sp</dimen>
+    <dimen name="activity_login_edtxt_drawable_padding">10dp</dimen>
+    <dimen name="activity_login_edtxt_padding">10dp</dimen>
+    <dimen name="activity_login_button_width">200dp</dimen>
+    <dimen name="activity_login_button_margin_top">20dp</dimen>
+    <dimen name="activity_login_forgot_pwd_margin_left">15dp</dimen>
+    <dimen name="activity_login_forgot_pwd_txt_size">17dp</dimen>
+    <dimen name="profile_page_edtxt_txt_size">17dp</dimen>
+    <!--signup page-->
+    <dimen name="activity_sign_up_paddingLeft">30dp</dimen>
+    <dimen name="activity_sign_up_paddingRight">30dp</dimen>
+    <dimen name="activity_sign_up_margin_top">40dp</dimen>
+    <dimen name="activity_login_margin_top_signup">30dp</dimen>
+    <dimen name="activity_sign_up_card_padding">16dp</dimen>
+    <dimen name="activity_sign_up_txt_input_layout_margin_top">16dp</dimen>
+    <dimen name="activity_sign_up_txt_input_layout_edtxt_margin_lft_right">10dp</dimen>
+    <dimen name="activity_sign_up_edtxt_padding">10dp</dimen>
+    <dimen name="activity_sign_up_edtxt_txt_size">17dp</dimen>
+    <dimen name="activity_sign_up_sign_up_margin_top">20dp</dimen>
+</resources>

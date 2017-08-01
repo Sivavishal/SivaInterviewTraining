@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/parent_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingLeft="@dimen/activity_sign_up_paddingLeft"
+            android:paddingRight="@dimen/activity_sign_up_paddingRight">
+
+            <RelativeLayout
+                android:id="@+id/circleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/activity_login_margin_top">
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/signup_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/circleView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/activity_sign_up_margin_top"
+                android:background="@drawable/background_box"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_sign_up_card_padding">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_edtTxt_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/edtTxt_first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:layout_marginRight="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:background="@android:color/transparent"
+                        android:ems="15"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="@string/hint_name"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:padding="@dimen/activity_sign_up_edtxt_padding"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/activity_sign_up_edtxt_txt_size" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/input_edtTxt_mob_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/input_edtTxt_first_name"
+                    android:layout_marginLeft="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                    android:layout_marginRight="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right">
+
+
+
+                    <EditText
+                        android:id="@+id/edtTxt_mob_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
+                        android:ems="15"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="@string/hint_phone_no"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:padding="@dimen/activity_sign_up_edtxt_padding"
+                        android:paddingRight="5dp"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/activity_sign_up_edtxt_txt_size" />
+
+
+                </RelativeLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_edtTxt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/input_edtTxt_mob_no"
+                    android:theme="@style/TextLabel">
+
+                    <EditText
+                        android:id="@+id/edtTxt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:layout_marginRight="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
+                        android:ems="15"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="@string/hint_user_email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:padding="@dimen/activity_sign_up_edtxt_padding"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/activity_sign_up_edtxt_txt_size" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_edtTxt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/input_edtTxt_email"
+                    android:theme="@style/TextLabel"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/edtTxt_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:layout_marginRight="@dimen/activity_sign_up_txt_input_layout_edtxt_margin_lft_right"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
+                        android:ems="15"
+                        android:fontFamily="sans-serif-condensed"
+                        android:hint="@string/hint_pin"
+                        android:inputType="numberPassword"
+                        android:maxLength="4"
+                        android:maxLines="1"
+                        android:padding="@dimen/activity_sign_up_edtxt_padding"
+                        android:scrollHorizontally="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/activity_sign_up_edtxt_txt_size" />
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/signup_details"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_fill_background">
+
+                <TextView
+                    android:id="@+id/txt_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center"
+                    android:minWidth="88dp"
+                    android:text="@string/txt_register"
+                    android:textColor="@color/icons"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_height="match_parent"
+    tools:context="com.karadipath.sivainterviewtraining.home.HomeActivity"
+    tools:showIn="@layout/activity_home">
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="V. SIVAMANIKANDAN"/>
+    <TextView
+        android:layout_below="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="10sp"
+        android:layout_height="wrap_content"
+        android:text="ANDROID APPLICATION DEVELOPER"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_taskVideoplay"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="TASK 1 (Play Video with Subtitle)"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_taskLogin"
+        android:layout_below="@+id/btn_taskVideoplay"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="TASK 2 (Register and Login)"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
