@@ -1,16 +1,23 @@
 package com.karadipath.sivainterviewtraining.task1;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.media.MediaFormat;
 import android.media.MediaPlayer;
 import android.media.TimedText;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.karadipath.sivainterviewtraining.R;
@@ -21,6 +28,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class PlayVideoActivity extends AppCompatActivity {
     VideoView mVideoView;
@@ -60,9 +71,9 @@ public class PlayVideoActivity extends AppCompatActivity {
     private String getSubtitleFile(int resId) {
         String fileName = getResources().getResourceEntryName(resId);
         File subtitleFile = getFileStreamPath(fileName);
-        if (subtitleFile.exists()) {
+       /* if (subtitleFile.exists()) {
             return subtitleFile.getAbsolutePath();
-        }
+        }*/
 
         InputStream inputStream = null;
         OutputStream outputStream = null;
@@ -126,9 +137,11 @@ public class PlayVideoActivity extends AppCompatActivity {
                 mVideoView.stopPlayback();
             }
         }
-        if(player != null){
-            if(player.isPlaying()){
-                player.stop();
+        if (!(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)) {
+            if(player != null){
+                if(player.isPlaying()){
+                    player.stop();
+                }
             }
         }
         getSupportActionBar().show();
@@ -145,9 +158,11 @@ public class PlayVideoActivity extends AppCompatActivity {
         }
 
         mVideoView.start();
-        if(player != null){
-            if(player.isPlaying()){
-                player.stop();
+        if (!(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)) {
+            if(player != null){
+                if(player.isPlaying()){
+                    player.stop();
+                }
             }
         }
     }
@@ -160,30 +175,63 @@ public class PlayVideoActivity extends AppCompatActivity {
         }
 
         mVideoView.start();
-if(player != null){
-    if(player.isPlaying()){
-        player.stop();
-    }
-}
-        player = MediaPlayer.create(mContext, R.raw.itteaser);
-        String uriPath = "android.resource://com.karadipath.sivainterviewtraining/"+R.raw.itteaser;
-        Uri uri = Uri.parse(uriPath);
-        mVideoView.setVideoURI(uri);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //  mVideoView.addSubtitleSource(getResources().openRawResource(R.raw.itteasersrt), MediaFormat.createSubtitleFormat("text/vtt", Locale.ENGLISH.getLanguage()));
+        if (!(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)) {
+            if(player != null){
+                if(player.isPlaying()){
+                    player.stop();
+                }
+            }
         }
-        mVideoView.requestFocus();
-        mVideoView.canPause();
-        mVideoView.showContextMenu();
-        mVideoView.canSeekForward();
 
-        try {
-            player.addTimedTextSource(getSubtitleFile(R.raw.own),
+        Uri uri = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            mTxtSubTitle.setVisibility(View.INVISIBLE);
+           // int toSpeak = getResources().getIdentifier("raw/itteaser", null, getPackageName());
+           // player = MediaPlayer.create(mContext,toSpeak);
+        }else{
+            player = MediaPlayer.create(mContext, R.raw.itteaser);
+        }
+        String uriPath = "android.resource://com.karadipath.sivainterviewtraining/"+ R.raw.itteaser;
+
+       uri = Uri.parse(uriPath);
+
+       
+        mVideoView.setVideoURI(uri);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            InputStream i = getApplicationContext().getResources().openRawResource(R.raw.ownvtt);
+            mVideoView.addSubtitleSource(i ,MediaFormat.createSubtitleFormat("text/vtt",Locale.ENGLISH.getLanguage()));
+
+         //  mVideoView.addSubtitleSource(getResources().openRawResource(R.raw.ownvtt), MediaFormat.createSubtitleFormat("text/vtt", Locale.ENGLISH.getLanguage()));
+        }else{
+
+            try {
+                 /*    try{
+                int rresid =  getResources().getIdentifier("raw/own", null, getPackageName());
+               String filepath =  getSubtitleFile(rresid);
+                Uri newuri =  Uri.parse(filepath);
+                player.addTimedTextSource(mContext,newuri,
+                        MediaPlayer.MEDIA_MIMETYPE_TEXT_SUBRIP);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }*/
+
+
+
+            /*try{
+
+                player.addTimedTextSource(mContext,Uri.parse(uriSrtPath),
+                        MediaPlayer.MEDIA_MIMETYPE_TEXT_SUBRIP);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }*/
+            int rresid =  getResources().getIdentifier("raw/own", null, getPackageName());
+            player.addTimedTextSource(getSubtitleFile(rresid),
                     MediaPlayer.MEDIA_MIMETYPE_TEXT_SUBRIP);
             int textTrackIndex = findTrackIndexFor(
                     MediaPlayer.TrackInfo.MEDIA_TRACK_TYPE_TIMEDTEXT, player.getTrackInfo());
             if (textTrackIndex >= 0) {
                 player.selectTrack(textTrackIndex);
+                player.setVolume(0,0);
             } else {
             }
             player.setOnTimedTextListener(new MediaPlayer.OnTimedTextListener() {
@@ -201,9 +249,45 @@ if(player != null){
                     }
                 }
             });
+
             player.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        try {
+
+
+
+
+
+
+
+            mVideoView.requestFocus();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public File setImageUriFile() {
+
+        File file = null;
+
+        File dir = new File("file:///android_asset");
+        if (dir.exists()) {
+
+        }
+        try{
+            file = new File("file:///android_asset/itteaser");
+        }
+       catch (Exception ex){
+           ex.printStackTrace();
+       }
+        /*String uriPath = "android.resource://com.karadipath.sivainterviewtraining/"+R.raw.itteaser;
+        File directory = new File("android.resource://com.example.photoalbum/raw/");*/
+
+        return file;
     }
 }
